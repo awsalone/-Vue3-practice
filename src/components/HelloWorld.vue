@@ -4,6 +4,8 @@
 <ul>
   <li v-for="(item,index) in taskList" :key="index" :class="{completed:item.status}"><input type="checkbox" :checked="item.status" @click="updateChecked($event,index)"/>{{item.content}}</li>
 </ul>
+<button v-debounce="testClick" >防抖测试</button>
+<button v-throttle="testClick" >节流测试</button>
 </template>
 
 <script lang="ts">
@@ -11,9 +13,15 @@ import { ref, defineComponent, toRefs , getCurrentInstance , onMounted, reactive
 import { useStore } from 'vuex'
 import testDemo from '@/interfaces/HelloWorld/inedx'
 import myMixin from '@/mixins/test'
+import Debounce from '@/directive/debounce'
+import Throttle from '@/directive/throttle'
 export default defineComponent({
   mixins:[myMixin],
   name: 'HelloWorld',
+    directives:{
+    Debounce,
+    Throttle
+  },
   props: {
     msg: {
       type: String,
@@ -50,6 +58,10 @@ export default defineComponent({
     console.log(context.attrs)
     const onEdit = (item:any,index:string)=>{
     }
+
+    function testClick(){
+      console.log('=========')
+    }
     onMounted(()=>{
        const internalInstance  = getCurrentInstance()
        console.log(context)
@@ -61,7 +73,8 @@ export default defineComponent({
       taskList,
       inputConfirm,
       curInput,
-      updateChecked
+      updateChecked,
+      testClick,
        }
   },
   data(){

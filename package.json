@@ -1,7 +1,7 @@
 {
   "version": "0.0.0",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development vite",
+    "dev": "cross-env NODE_ENV=development vite --open",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview"
   },
