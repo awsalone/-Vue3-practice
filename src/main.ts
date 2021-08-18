@@ -1,12 +1,19 @@
 import { createApp } from 'vue'
+import { createI18n } from 'vue-i18n'
+import ElementPlus from 'element-plus'
 import axios from '@/utils/system/request'
 import router from '@/router'
 import store from '@/store';
 import App from '@/App.vue'
-import './css/reset.css'
+import 'element-plus/lib/theme-chalk/index.css';
+import '@/css/reset.css'
 import 'normalize.css'
+import i18n from '@/locale/index'
+
 const app = createApp(App)
 app
+  .use(ElementPlus,{size:'small'})
+  .use(i18n)
   .use(store)
   .use(router)
   .mount('#app')

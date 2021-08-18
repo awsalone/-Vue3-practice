@@ -16,6 +16,7 @@ const routerList = ['/','/home','/404']
 
 router.beforeEach((to:any, from:any, next:any) => {
   // to and from are both route objects. must call `next`.
+
   NProgress.start();
   if(routerList.includes(to.path)){
     next()

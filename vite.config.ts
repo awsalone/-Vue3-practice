@@ -1,10 +1,29 @@
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import styleImport from 'vite-plugin-style-import'
 import { viteMockServe } from 'vite-plugin-mock'
 const path = require('path')
 // vite.config.js # or vite.config.ts
 console.log(path.resolve(__dirname, '/src'))
 module.exports = {
-  plugins: [vue(),viteMockServe({ supportTs: false }),],
+  plugins: [
+    vue(),
+    viteMockServe({ supportTs: false }),
+    styleImport({
+      libs: [{
+        libraryName: 'element-plus',
+        esModule: true,
+        ensureStyleFile: true,
+        resolveStyle: (name) => {
+          name = name.slice(3)
+          return `element-plus/packages/theme-chalk/src/${name}.scss`;
+        },
+        resolveComponent: (name) => {
+          return `element-plus/lib/${name}`;
+        },
+      }]
+    })
+  ],
   resolve: {
     alias:{
   // 键必须以斜线开始和结束

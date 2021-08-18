@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\bcwl111\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add vue-router@4
+  C:\Program Files\nodejs\node.exe C:\Users\bcwl111\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add -D postcss-loader autofixer
 
 PATH: 
   C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\dotnet\;C:\Program Files\TortoiseGit\bin;C:\Program Files\nodejs\;C:\Users\bcwl111\AppData\Local\Programs\Python\Python39;C:\Program Files\Git\cmd;C:\Users\bcwl111\AppData\Local\Microsoft\WindowsApps;;C:\Users\bcwl111\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\bcwl111\AppData\Roaming\npm
@@ -14,27 +14,42 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\bcwl111\Desktop\awsalone\demos\vue3Demo\hello-vue3\node_modules\esbuild\esbuild.exe'
+  Error: http://r.cnpmjs.org/autofixer: [not_found] document not found
+      at Request.params.callback [as _callback] (C:\Users\bcwl111\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66992:18)
+      at Request.self.callback (C:\Users\bcwl111\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140763:22)
+      at Request.emit (events.js:375:28)
+      at Request.<anonymous> (C:\Users\bcwl111\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141735:10)
+      at Request.emit (events.js:375:28)
+      at IncomingMessage.<anonymous> (C:\Users\bcwl111\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141657:12)
+      at Object.onceWrapper (events.js:481:28)
+      at IncomingMessage.emit (events.js:387:35)
+      at endReadableNT (internal/streams/readable.js:1317:12)
+      at processTicksAndRejections (internal/process/task_queues.js:82:21)
 
 npm manifest: 
   {
     "version": "0.0.0",
     "scripts": {
-      "dev": "cross-env NODE_ENV=development vite",
+      "dev": "cross-env NODE_ENV=development vite --open",
       "build": "vue-tsc --noEmit && vite build",
       "serve": "vite preview"
     },
     "dependencies": {
       "@types/node": "^15.12.0",
+      "@types/nprogress": "^0.2.0",
       "axios": "^0.21.1",
       "mockjs": "^1.1.0",
+      "normalize.css": "^8.0.1",
+      "nprogress": "^0.2.0",
       "vue": "^3.0.5",
+      "vue-router": "4",
       "vuex": "4.0.0"
     },
     "devDependencies": {
       "@vitejs/plugin-vue": "^1.2.3",
       "@vue/compiler-sfc": "^3.0.5",
       "cross-env": "^7.0.3",
+      "postcss-pxtorem": "^6.0.0",
       "typescript": "^4.1.3",
       "vite": "^2.3.5",
       "vite-plugin-mock": "^2.7.0"
@@ -133,6 +148,11 @@ Lockfile:
     version "15.14.7"
     resolved "https://r.cnpmjs.org/@types/node/download/@types/node-15.14.7.tgz#29fea9a5b14e2b75c19028e1c7a32edd1e89fe92"
     integrity sha1-Kf6ppbFOK3XBkCjhx6Mu3R6J/pI=
+  
+  "@types/nprogress@^0.2.0":
+    version "0.2.0"
+    resolved "https://r.cnpmjs.org/@types/nprogress/download/@types/nprogress-0.2.0.tgz#86c593682d4199212a0509cc3c4d562bbbd6e45f"
+    integrity sha1-hsWTaC1BmSEqBQnMPE1WK7vW5F8=
   
   "@types/resolve@1.17.1":
     version "1.17.1"
@@ -648,6 +668,16 @@ Lockfile:
     resolved "https://r.cnpmjs.org/normalize-path/download/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
     integrity sha1-Dc1p/yOhybEf0JeDFmRKA4ghamU=
   
+  normalize.css@^8.0.1:
+    version "8.0.1"
+    resolved "https://r.cnpmjs.org/normalize.css/download/normalize.css-8.0.1.tgz#9b98a208738b9cc2634caacbc42d131c97487bf3"
+    integrity sha1-m5iiCHOLnMJjTKrLxC0THJdIe/M=
+  
+  nprogress@^0.2.0:
+    version "0.2.0"
+    resolved "https://r.cnpmjs.org/nprogress/download/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+    integrity sha1-y480xTIT2JVyP8urkH6UIq28r7E=
+  
   on-finished@~2.3.0:
     version "2.3.0"
     resolved "https://r.cnpmjs.org/on-finished/download/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"
@@ -721,6 +751,11 @@ Lockfile:
       postcss-modules-scope "^3.0.0"
       postcss-modules-values "^4.0.0"
       string-hash "^1.1.1"
+  
+  postcss-pxtorem@^6.0.0:
+    version "6.0.0"
+    resolved "https://r.cnpmjs.org/postcss-pxtorem/download/postcss-pxtorem-6.0.0.tgz#f228a4d05d8a73f0642eabae950e2b19836366d7"
+    integrity sha1-8iik0F2Kc/BkLquulQ4rGYNjZtc=
   
   postcss-selector-parser@^6.0.2, postcss-selector-parser@^6.0.4:
     version "6.0.6"
