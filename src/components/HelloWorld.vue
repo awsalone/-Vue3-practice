@@ -6,11 +6,13 @@
 </ul>
 <button v-debounce="testClick" >防抖测试</button>
 <button v-throttle="testClick" >节流测试</button>
+<el-button @click="jump">进入404</el-button>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent, toRefs , getCurrentInstance , onMounted, reactive} from 'vue'
 import { useStore } from 'vuex'
+import {useRouter} from 'vue-router'
 import testDemo from '@/interfaces/HelloWorld/inedx'
 import myMixin from '@/mixins/test'
 import Debounce from '@/directive/debounce'
@@ -29,6 +31,7 @@ export default defineComponent({
     }
   },
   setup: (props,context) => {
+    const router = useRouter()
     const test123:testDemo = {
       name:'fsaf',
       age:43,
@@ -62,6 +65,11 @@ export default defineComponent({
     function testClick(){
       console.log('=========')
     }
+    console.log(router)
+    function jump(){
+      console.log(router)
+      router.push({name:'404'})
+    }
     onMounted(()=>{
        const internalInstance  = getCurrentInstance()
        console.log(context)
@@ -75,6 +83,7 @@ export default defineComponent({
       curInput,
       updateChecked,
       testClick,
+      jump
        }
   },
   data(){

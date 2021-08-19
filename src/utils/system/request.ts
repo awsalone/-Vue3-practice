@@ -3,7 +3,7 @@ const BaseURL = process.env.NODE_ENV === 'development'?'/api':''
 
 const instance: AxiosInstance = axios.create({
   baseURL:BaseURL,
-  timeout: 5000
+  timeout: 8000
 })
 
 instance.interceptors.request.use((config:AxiosRequestConfig)=>{

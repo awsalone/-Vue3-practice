@@ -32,6 +32,24 @@
 </el-dialog>
         </li>
       </ul>
+    <el-input
+          size="large"
+          v-model="form.name"
+          placeholder="用户名"
+          type="text"
+          maxlength="50"
+        >
+        </el-input>
+      <el-input   
+          size="large"
+          ref="password"
+          v-model="form.password"
+          :type="passwordType"
+          :placeholder="$t('message.system.password')"
+          name="password"
+          maxlength="50"></el-input>
+  <el-button @click="submit">登录</el-button>
+  <el-button @click="ask">请求</el-button>
     </div>
   </div>
 </template>
@@ -44,18 +62,29 @@ import {
   reactive,
   ref,
 } from "vue";
+import {loginApi} from '@/api/user'
 import { useStore } from "vuex";
 import { ElMessageBox } from 'element-plus';
 import instance from "@/utils/system/request";
+import { request } from "http";
 
 export default defineComponent({
-  mounted(){
-    console.log(this.$i18n)
-    console.log('============')
+  // mounted(){
+  //   console.log(this.$i18n)
+  //   console.log('============')
+  // },
+  methods:{
+    ask(){
+      this.$axios.get('test')
+    }
   },
   setup(prop, ctx) {
+    const form = reactive({
+      name:'admin',
+      password:'123456'
+    })
+    const instance = getCurrentInstance()
       const dialogVisible = ref(false);
-      
       const handleClose = (done:any) => {
         ElMessageBox
           .confirm('确认关闭？')
@@ -103,17 +132,33 @@ export default defineComponent({
 
   let {proxy}:any = getCurrentInstance()
 
-    // onMounted(() => {
-    //   // const instance = getCurrentInstance()
-    //   // if(!instance) return
+    onMounted(() => {
+        
+       const instance = getCurrentInstance()
+      function ask(){
+        if(!instance) return
+      instance.appContext.config.globalProperties.$axios.get('/test')
+    }
+    
     //   // const instanceAxios = instance.appContext.config.globalProperties.$axios
     //   // instanceAxios.get('/test')
     //   console.log(containerRef.value);
-    // });
+    });
+    function submit(){
+      loginApi({
+        name: form.name,
+        password: form.password
+      }).then(res=>{
+        console.log(res)
+      })
+    }
+  
     return {
       dialogVisible,
         handleClose,
-        proxy
+        proxy,
+        form,
+        submit
     }
   },
 });
@@ -124,7 +169,5 @@ export default defineComponent({
 <style scoped lang="scss">
 .scroll_container {
   height: 520px;
-  .wrapper {
-  }
 }
 </style>

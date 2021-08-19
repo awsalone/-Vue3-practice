@@ -10,6 +10,7 @@ import '@/css/reset.css'
 import 'normalize.css'
 import i18n from '@/locale/index'
 
+console.log(import.meta.env)
 const app = createApp(App)
 app
   .use(ElementPlus,{size:'small'})
@@ -73,7 +74,7 @@ app.config.globalProperties.testFnc = function () {
 //   }
 // })
 
-if (process.env.NODE_ENV === 'development') {
+if (import.meta.env.MODE === 'development') {
   app.config.globalProperties.$axios = axios;
   // require('./mock')
 };
