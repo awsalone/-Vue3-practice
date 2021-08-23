@@ -4,8 +4,8 @@
 <ul>
   <li v-for="(item,index) in taskList" :key="index" :class="{completed:item.status}"><input type="checkbox" :checked="item.status" @click="updateChecked($event,index)"/>{{item.content}}</li>
 </ul>
-<button v-debounce="testClick" >防抖测试</button>
-<button v-throttle="testClick" >节流测试</button>
+<button v-debounce:500="testClick" >防抖测试</button>
+<button v-throttle:5000="testClick" >节流测试</button>
 <el-button @click="jump">进入404</el-button>
 </template>
 

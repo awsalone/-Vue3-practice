@@ -19,7 +19,7 @@ const directive:Directive = {
       }
       timer = setTimeout(() => {
         binding.value()
-      }, 200);
+      }, Number(binding.arg)||200);
     }
     el.addEventListener('click',el.__handleClick__)
   },

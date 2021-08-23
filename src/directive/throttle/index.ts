@@ -14,7 +14,7 @@
      }
      let pre:number = 0
      el.__handleClick__ = function(el:ElType){
-       if(Date.now()-pre<1000) return
+       if(Date.now()-pre<(Number(binding.arg)||500)) return
        binding.value()
        pre = Date.now()
      }
