@@ -8,9 +8,9 @@ import App from '@/App.vue'
 import 'element-plus/lib/theme-chalk/index.css';
 import '@/css/reset.css'
 import 'normalize.css'
+import './permission'
 import i18n from '@/locale/index'
 
-console.log(import.meta.env)
 const app = createApp(App)
 app
   .use(ElementPlus,{size:'small'})

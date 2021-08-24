@@ -21,6 +21,7 @@ const getters = {
 const mutations = {
   tokenChange(state: State, token: string) {
     state.token = token
+    window.localStorage.setItem('token',token)
   },
   infoChange(state: State, info: object) {
     state.info = info
@@ -33,7 +34,7 @@ const actions = {
   login({ commit, dispatch }: ActionContext<State, State>, params: any) {
     return new Promise((resolve, reject) => {
       loginApi(params)
-      .then(res => {
+      .then((res:any) => {
         commit('tokenChange', res.data.token)
         dispatch('getInfo', { token: res.data.token })
         .then(infoRes => {
@@ -46,7 +47,7 @@ const actions = {
   getInfo({ commit }: ActionContext<State, State>, params: any) {
     return new Promise((resolve, reject) => {
       getInfoApi(params)
-      .then(res => {
+      .then((res:any) => {
         commit('infoChange', res.data.info)
         resolve(res.data.info)
       })
@@ -56,10 +57,10 @@ const actions = {
   // login out the system after user click the loginOut button
   loginOut({ commit }: ActionContext<State, State>) {
     loginOutApi()
-    .then(res => {
+    .then((res:any) => {
 
     })
-    .catch(error => {
+    .catch((error:any) => {
 
     })
     .finally(() => {
