@@ -131,6 +131,7 @@ export default defineComponent({
     const containerRef = ref(null);
 
   let {proxy}:any = getCurrentInstance()
+  console.log(proxy,getCurrentInstance())
 
     onMounted(() => {
         
