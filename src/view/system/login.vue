@@ -67,6 +67,8 @@ export default defineComponent({
             router.push(route.query.redirect as string || '/')
      })
    }
+
+   
     
     return {
       form,

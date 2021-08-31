@@ -5,7 +5,7 @@ import axios from '@/utils/system/request'
 import router from '@/router'
 import store from '@/store';
 import App from '@/App.vue'
-import 'element-plus/lib/theme-chalk/index.css';
+import 'element-plus/dist/index.css'
 import '@/css/reset.css'
 import '@/assets/style/common.scss' // 公共css
 import 'normalize.css'

@@ -1,22 +1,26 @@
 <template>
-  <el-menu>
-      <el-menu-item-group>
-          <template #title>分组一</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-  </el-menu>
+<el-menu>
+   <menu-item v-for="(item,index) in allRoutes" :key="index" :menu=item />
+</el-menu>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import MenuItem from './menuItem.vue'
 
 export default defineComponent({
+  components:{
+    MenuItem
+  },
   setup() {
-   
+   const allRoutes = useRouter().options.routes
     onMounted(()=>{
- console.log(123)
+ console.log(allRoutes)
     })
+    return {
+      allRoutes
+    }
   },
 })
 </script>

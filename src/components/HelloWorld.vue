@@ -17,6 +17,7 @@ import testDemo from '@/interfaces/HelloWorld/inedx'
 import myMixin from '@/mixins/test'
 import Debounce from '@/directive/debounce'
 import Throttle from '@/directive/throttle'
+import { resolve } from 'dns'
 export default defineComponent({
   mixins:[myMixin],
   name: 'HelloWorld',
@@ -70,6 +71,7 @@ export default defineComponent({
       console.log(router)
       router.push({name:'404'})
     }
+
     onMounted(()=>{
        const internalInstance  = getCurrentInstance()
        console.log(context)
@@ -121,3 +123,15 @@ code {
   background-color: #ccc;
 }
 </style>
+
+function resolve(resolve: any, reject: any) {
+  throw new Error('Function not implemented.')
+}
+
+function reject(resolve: any, reject: any) {
+  throw new Error('Function not implemented.')
+}
+
+function reject(resolve: any, reject: any) {
+  throw new Error('Function not implemented.')
+}
